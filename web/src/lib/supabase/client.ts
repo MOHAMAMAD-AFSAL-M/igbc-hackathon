@@ -13,6 +13,7 @@ export const isSupabaseConfigured = (): boolean => {
 };
 
 let supabaseInstance: SupabaseClient | null = null;
+let authInitialized = false;
 
 export function getSupabaseClient(): SupabaseClient | null {
   if (typeof window === "undefined") {
@@ -25,6 +26,10 @@ export function getSupabaseClient(): SupabaseClient | null {
 
   if (!supabaseInstance && supabaseUrl && supabaseAnonKey) {
     supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+      },
       realtime: {
         params: {
           eventsPerSecond: 10,
@@ -34,4 +39,41 @@ export function getSupabaseClient(): SupabaseClient | null {
   }
 
   return supabaseInstance;
+}
+
+/**
+ * Ensure the operator is signed in for the KSEB web dashboard.
+ * This auto-signs-in with the demo operator credentials if no session exists.
+ * Call this once from the dashboard shell or layout before data fetches.
+ */
+export async function ensureOperatorAuth(): Promise<boolean> {
+  if (authInitialized) return true;
+  
+  const supabase = getSupabaseClient();
+  if (!supabase) return false;
+  
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      authInitialized = true;
+      return true;
+    }
+    
+    // Auto sign-in with demo operator credentials
+    const { error } = await supabase.auth.signInWithPassword({
+      email: "operator@kseb.demo",
+      password: "kseb@vpp2026",
+    });
+    
+    if (!error) {
+      authInitialized = true;
+      return true;
+    }
+    
+    console.warn("Auto operator sign-in failed:", error.message);
+    return false;
+  } catch (err) {
+    console.warn("Auth check failed:", err);
+    return false;
+  }
 }

@@ -28,7 +28,7 @@ export default function ProsumersPage() {
     load();
   }, []);
 
-  const total = 128; // Network total
+  const total = prosumers.length || 0;
   const available = prosumers.filter((p) => p.availability_status === "AVAILABLE").length;
   const unavailable = prosumers.filter((p) => p.availability_status === "UNAVAILABLE").length;
   const offline = prosumers.filter((p) => p.availability_status === "OFFLINE").length;
