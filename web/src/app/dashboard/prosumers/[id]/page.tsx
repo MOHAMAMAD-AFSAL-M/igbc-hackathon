@@ -40,7 +40,7 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
       <DashboardShell pageTitle="Prosumer Not Found">
         <div className="text-center py-12">
           <p className="text-slate-600">Prosumer {prosumerId} could not be found.</p>
-          <Link href="/dashboard/prosumers" className="text-blue-600 font-semibold mt-2 inline-block">
+          <Link href="/dashboard/prosumers" className="text-[#659287] font-semibold mt-2 inline-block">
             Back to Prosumers
           </Link>
         </div>
@@ -62,7 +62,7 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
         actions={
           <Link
             href="/dashboard/prosumers"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            className="btn-secondary-theme inline-flex items-center gap-1.5 text-xs font-semibold"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Registry
           </Link>
@@ -84,14 +84,14 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
             value={formatEnergy(prosumer.battery_capacity_kwh)}
             subtitle="LiFePO4 ESS Pack"
             icon={Shield}
-            accentColor="blue"
+            accentColor="green"
           />
           <MetricCard
             title="Max Discharge"
             value={formatPower(prosumer.max_discharge_kw)}
             subtitle="Bi-directional hybrid inverter"
             icon={Zap}
-            accentColor="slate"
+            accentColor="blue"
           />
           <MetricCard
             title="Solar Generation"
@@ -104,17 +104,17 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
       )}
 
       {/* Telemetry Chart */}
-      <div className="tech-panel rounded-xl p-5 border border-slate-200 mb-6">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+      <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md mb-6">
+        <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20 mb-3">
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
               Live Inverter Telemetry Curves
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
               Simulated real-time battery SoC progression, solar PV generation, and discharge output
             </p>
           </div>
-          <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 tech-mono">
+          <span className="text-xs font-semibold text-[#659287] bg-[#88BDA4]/20 px-2.5 py-1 rounded-full border border-[#88BDA4]/40 tech-mono">
             Active Stream
           </span>
         </div>
@@ -124,31 +124,31 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
       {/* Dispatch Participation and Incentive History */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Participation History */}
-        <div className="tech-panel rounded-xl p-5 border border-slate-200">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
-              <History className="w-4 h-4 text-slate-600" />
+        <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md">
+          <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029] flex items-center gap-2">
+              <History className="w-4 h-4 text-[#659287]" />
               Dispatch History
             </h3>
           </div>
-          <div className="mt-3 divide-y divide-slate-100 text-xs">
+          <div className="mt-3 divide-y divide-[#88BDA4]/15 text-xs">
             <div className="py-2.5 flex items-center justify-between">
               <div>
-                <span className="font-bold text-slate-900 tech-mono">DSP-1001</span>
+                <span className="font-bold text-[#193029] tech-mono">DSP-1001</span>
                 <p className="text-[11px] text-slate-500">Kalamassery Peak Mitigation</p>
               </div>
               <div className="text-right">
-                <span className="font-bold text-emerald-600 tech-mono">4.8 kW delivered</span>
+                <span className="font-bold text-[#659287] tech-mono">4.8 kW delivered</span>
                 <p className="text-[10px] text-slate-400">Today, 12:30</p>
               </div>
             </div>
             <div className="py-2.5 flex items-center justify-between">
               <div>
-                <span className="font-bold text-slate-900 tech-mono">DSP-0998</span>
+                <span className="font-bold text-[#193029] tech-mono">DSP-0998</span>
                 <p className="text-[11px] text-slate-500">Feeders 2 & 4 Relief</p>
               </div>
               <div className="text-right">
-                <span className="font-bold text-emerald-600 tech-mono">5.0 kW delivered</span>
+                <span className="font-bold text-[#659287] tech-mono">5.0 kW delivered</span>
                 <p className="text-[10px] text-slate-400">Yesterday, 17:00</p>
               </div>
             </div>
@@ -156,35 +156,35 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
         </div>
 
         {/* Incentive Ledger */}
-        <div className="tech-panel rounded-xl p-5 border border-slate-200">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
-              <Award className="w-4 h-4 text-blue-600" />
+        <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md">
+          <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029] flex items-center gap-2">
+              <Award className="w-4 h-4 text-[#659287]" />
               Earnings & Incentives Ledger
             </h3>
-            <span className="text-xs font-bold text-emerald-700 tech-mono">
+            <span className="text-xs font-bold text-[#659287] tech-mono bg-[#88BDA4]/15 px-2.5 py-1 rounded-full border border-[#88BDA4]/30">
               Total: ₹1,420
             </span>
           </div>
-          <div className="mt-3 divide-y divide-slate-100 text-xs">
+          <div className="mt-3 divide-y divide-[#88BDA4]/15 text-xs">
             <div className="py-2.5 flex items-center justify-between">
               <div>
-                <p className="font-semibold text-slate-800">DSP-1001 Active Allocation</p>
+                <p className="font-semibold text-[#193029]">DSP-1001 Active Allocation</p>
                 <p className="text-[10px] text-slate-400">₹10.00 / kWh rate</p>
               </div>
               <div className="text-right">
-                <span className="font-bold text-emerald-600 tech-mono">+₹48.00</span>
+                <span className="font-bold text-[#659287] tech-mono">+₹48.00</span>
                 <span className="block text-[10px] text-amber-600 font-semibold">PENDING</span>
               </div>
             </div>
             <div className="py-2.5 flex items-center justify-between">
               <div>
-                <p className="font-semibold text-slate-800">DSP-0998 Completed Event</p>
+                <p className="font-semibold text-[#193029]">DSP-0998 Completed Event</p>
                 <p className="text-[10px] text-slate-400">10.0 kWh total delivered</p>
               </div>
               <div className="text-right">
-                <span className="font-bold text-slate-900 tech-mono">+₹100.00</span>
-                <span className="block text-[10px] text-emerald-600 font-semibold">SETTLED</span>
+                <span className="font-bold text-[#193029] tech-mono">+₹100.00</span>
+                <span className="block text-[10px] text-[#659287] font-semibold">SETTLED</span>
               </div>
             </div>
           </div>

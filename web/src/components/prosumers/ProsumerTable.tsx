@@ -2,68 +2,68 @@ import React from "react";
 import { Prosumer } from "@/lib/types";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import Link from "next/link";
-import { ArrowRight, BatteryCharging, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { formatPower, formatEnergy, formatPercent } from "@/lib/utils/formatters";
 
 export function ProsumerTable({ prosumers }: { prosumers: Prosumer[] }) {
   return (
-    <div className="tech-panel rounded-xl overflow-hidden border border-slate-200">
+    <div className="glass-panel rounded-2xl overflow-hidden border border-white/80 shadow-lg">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs">
-          <thead className="bg-slate-50 border-b border-slate-200">
-            <tr className="text-slate-500 uppercase tracking-wider font-semibold">
-              <th className="py-3 px-4 font-bold">Prosumer ID</th>
-              <th className="py-3 px-4 font-bold">Client Name</th>
-              <th className="py-3 px-4 font-bold">Cluster</th>
-              <th className="py-3 px-4 font-bold text-center">SoC</th>
-              <th className="py-3 px-4 font-bold">Battery Cap</th>
-              <th className="py-3 px-4 font-bold">Max Discharge</th>
-              <th className="py-3 px-4 font-bold">Status</th>
-              <th className="py-3 px-4 font-bold text-center">Mode</th>
-              <th className="py-3 px-4 font-bold text-right">Details</th>
+          <thead className="bg-white/40 border-b border-[#88BDA4]/30">
+            <tr className="text-[#52796f] uppercase tracking-wider font-bold">
+              <th className="py-3.5 px-4 font-bold">Prosumer ID</th>
+              <th className="py-3.5 px-4 font-bold">Client Name</th>
+              <th className="py-3.5 px-4 font-bold">Cluster</th>
+              <th className="py-3.5 px-4 font-bold text-center">SoC</th>
+              <th className="py-3.5 px-4 font-bold">Battery Cap</th>
+              <th className="py-3.5 px-4 font-bold">Max Discharge</th>
+              <th className="py-3.5 px-4 font-bold">Status</th>
+              <th className="py-3.5 px-4 font-bold text-center">Mode</th>
+              <th className="py-3.5 px-4 font-bold text-right">Details</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 bg-white">
+          <tbody className="divide-y divide-[#88BDA4]/15">
             {prosumers.map((p) => (
-              <tr key={p.id} className="hover:bg-slate-50/80 transition-colors">
-                <td className="py-3.5 px-4 font-bold text-slate-900 tech-mono">
-                  <Link href={`/dashboard/prosumers/${p.id}`} className="hover:text-blue-600">
+              <tr key={p.id} className="hover:bg-white/60 transition-colors">
+                <td className="py-3.5 px-4 font-bold text-[#193029] tech-mono">
+                  <Link href={`/dashboard/prosumers/${p.id}`} className="hover:text-[#659287] transition-colors">
                     {p.prosumer_code}
                   </Link>
                 </td>
-                <td className="py-3.5 px-4 font-semibold text-slate-800">{p.name}</td>
-                <td className="py-3.5 px-4 text-slate-600">{p.cluster_name}</td>
+                <td className="py-3.5 px-4 font-bold text-[#28483f]">{p.name}</td>
+                <td className="py-3.5 px-4 text-[#52796f]">{p.cluster_name}</td>
                 <td className="py-3.5 px-4 text-center">
                   <span
-                    className={`inline-block px-2 py-0.5 rounded font-bold tech-mono text-xs ${
+                    className={`inline-block px-2.5 py-0.5 rounded-full font-bold tech-mono text-xs shadow-2xs backdrop-blur-md ${
                       p.current_soc >= 75
-                        ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                        ? "bg-[#88BDA4]/30 text-[#193029] border border-[#88BDA4]/50"
                         : p.current_soc >= 40
-                        ? "bg-amber-50 text-amber-700 border border-amber-200"
-                        : "bg-rose-50 text-rose-700 border border-rose-200"
+                        ? "bg-amber-500/15 text-amber-900 border border-amber-500/30"
+                        : "bg-rose-500/15 text-rose-900 border border-rose-500/30"
                     }`}
                   >
                     {formatPercent(p.current_soc)}
                   </span>
                 </td>
-                <td className="py-3.5 px-4 tech-mono text-slate-700">
+                <td className="py-3.5 px-4 tech-mono font-medium text-[#28483f]">
                   {formatEnergy(p.battery_capacity_kwh)}
                 </td>
-                <td className="py-3.5 px-4 font-bold text-blue-600 tech-mono">
+                <td className="py-3.5 px-4 font-extrabold text-[#659287] tech-mono">
                   {formatPower(p.max_discharge_kw)}
                 </td>
                 <td className="py-3.5 px-4">
                   <StatusBadge status={p.availability_status} size="sm" />
                 </td>
                 <td className="py-3.5 px-4 text-center">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">
+                  <span className="text-[10px] uppercase font-bold text-[#28483f] bg-[#88BDA4]/20 border border-[#88BDA4]/35 px-2 py-0.5 rounded-md">
                     {p.participation_mode}
                   </span>
                 </td>
                 <td className="py-3.5 px-4 text-right">
                   <Link
                     href={`/dashboard/prosumers/${p.id}`}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#659287] hover:text-[#52796f] transition-colors"
                   >
                     View <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

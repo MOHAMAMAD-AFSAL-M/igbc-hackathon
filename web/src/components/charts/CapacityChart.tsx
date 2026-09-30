@@ -23,29 +23,29 @@ export function CapacityChart({ data }: { data: CapacityChartPoint[] }) {
         >
           <defs>
             <linearGradient id="availPower" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.25} />
-              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.0} />
-            </linearGradient>
-            <linearGradient id="reqPower" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.25} />
-              <stop offset="95%" stopColor="#f59e0b" stopOpacity={0.0} />
+              <stop offset="5%" stopColor="#659287" stopOpacity={0.35} />
+              <stop offset="95%" stopColor="#659287" stopOpacity={0.0} />
             </linearGradient>
             <linearGradient id="delivPower" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+              <stop offset="5%" stopColor="#88BDA4" stopOpacity={0.45} />
+              <stop offset="95%" stopColor="#88BDA4" stopOpacity={0.0} />
+            </linearGradient>
+            <linearGradient id="reqPower" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#eab308" stopOpacity={0.25} />
+              <stop offset="95%" stopColor="#eab308" stopOpacity={0.0} />
             </linearGradient>
           </defs>
 
-          <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#88bda4" strokeOpacity={0.15} vertical={false} />
           <XAxis
             dataKey="time"
-            stroke="#94a3b8"
+            stroke="#52796f"
             fontSize={12}
             tickLine={false}
-            axisLine={{ stroke: "#e2e8f0" }}
+            axisLine={{ stroke: "rgba(136, 189, 164, 0.3)" }}
           />
           <YAxis
-            stroke="#94a3b8"
+            stroke="#52796f"
             fontSize={12}
             tickLine={false}
             axisLine={false}
@@ -53,11 +53,13 @@ export function CapacityChart({ data }: { data: CapacityChartPoint[] }) {
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#ffffff",
-              borderColor: "#e2e8f0",
-              borderRadius: "0.5rem",
-              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              backgroundColor: "rgba(255, 255, 255, 0.85)",
+              backdropFilter: "blur(12px)",
+              borderColor: "rgba(136, 189, 164, 0.4)",
+              borderRadius: "0.75rem",
+              boxShadow: "0 8px 32px 0 rgba(101, 146, 135, 0.15)",
               fontSize: "12px",
+              color: "#193029",
             }}
             formatter={(val: any, name: any) => [`${val} kW`, name]}
           />
@@ -66,15 +68,15 @@ export function CapacityChart({ data }: { data: CapacityChartPoint[] }) {
             align="right"
             height={36}
             iconType="circle"
-            wrapperStyle={{ fontSize: "12px", color: "#64748b" }}
+            wrapperStyle={{ fontSize: "12px", color: "#3a6055" }}
           />
 
           <Area
             type="monotone"
             dataKey="availablePower"
             name="Available Power"
-            stroke="#3b82f6"
-            strokeWidth={2}
+            stroke="#659287"
+            strokeWidth={2.5}
             fillOpacity={1}
             fill="url(#availPower)"
           />
@@ -82,8 +84,9 @@ export function CapacityChart({ data }: { data: CapacityChartPoint[] }) {
             type="monotone"
             dataKey="requestedPower"
             name="Requested Power"
-            stroke="#f59e0b"
+            stroke="#d97706"
             strokeWidth={2}
+            strokeDasharray="4 4"
             fillOpacity={1}
             fill="url(#reqPower)"
           />
@@ -91,8 +94,8 @@ export function CapacityChart({ data }: { data: CapacityChartPoint[] }) {
             type="monotone"
             dataKey="deliveredPower"
             name="Delivered Power"
-            stroke="#10b981"
-            strokeWidth={2.5}
+            stroke="#457b6d"
+            strokeWidth={3}
             fillOpacity={1}
             fill="url(#delivPower)"
           />

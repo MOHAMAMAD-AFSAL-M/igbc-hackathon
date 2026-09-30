@@ -89,7 +89,7 @@ export default function DispatchDetailsPage({ params }: { params: Promise<{ id: 
       <DashboardShell pageTitle="Dispatch Not Found">
         <div className="text-center py-12">
           <p className="text-slate-600">Dispatch {dispatchId} could not be found.</p>
-          <Link href="/dashboard/dispatch" className="text-blue-600 font-semibold mt-2 inline-block">
+          <Link href="/dashboard/dispatch" className="text-[#659287] font-semibold mt-2 inline-block">
             Back to Dispatches
           </Link>
         </div>
@@ -114,7 +114,7 @@ export default function DispatchDetailsPage({ params }: { params: Promise<{ id: 
           <div className="flex items-center gap-2">
             <Link
               href="/dashboard/dispatch"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+              className="btn-secondary-theme inline-flex items-center gap-1.5 text-xs font-semibold"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> All Dispatches
             </Link>
@@ -123,13 +123,13 @@ export default function DispatchDetailsPage({ params }: { params: Promise<{ id: 
               <>
                 <button
                   onClick={() => setIsCancelOpen(true)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-rose-200 bg-white px-3.5 py-2 text-xs font-bold text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-rose-300/60 bg-white/70 backdrop-blur-md px-3.5 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50/80 transition-all cursor-pointer shadow-xs"
                 >
                   <XCircle className="w-3.5 h-3.5" /> Cancel Dispatch
                 </button>
                 <button
                   onClick={() => setIsCompleteOpen(true)}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-700 transition-colors cursor-pointer"
+                  className="btn-primary-theme inline-flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer"
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" /> Complete Dispatch
                 </button>
@@ -139,7 +139,7 @@ export default function DispatchDetailsPage({ params }: { params: Promise<{ id: 
             {dispatch?.status === "COMPLETED" && (
               <Link
                 href="/dashboard/events"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-slate-800 transition-colors"
+                className="btn-primary-theme inline-flex items-center gap-1.5 text-xs font-bold"
               >
                 <History className="w-3.5 h-3.5" /> View Settlement in History
               </Link>
@@ -150,27 +150,27 @@ export default function DispatchDetailsPage({ params }: { params: Promise<{ id: 
 
       {/* Completion Summary Banner if COMPLETED */}
       {dispatch?.status === "COMPLETED" && (
-        <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mb-6 p-4 rounded-2xl glass-panel border border-[#88BDA4]/40 bg-gradient-to-r from-[#88BDA4]/20 to-[#659287]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-full bg-emerald-600 text-white">
+            <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#659287] to-[#88BDA4] text-white shadow-sm">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-emerald-900">
+              <h4 className="text-sm font-bold text-[#193029]">
                 Grid Support Completed & Verified
               </h4>
-              <p className="text-xs text-emerald-700">
+              <p className="text-xs text-[#193029]/80">
                 Delivered <strong>{formatPower(dispatch.delivered_kw)}</strong> over{" "}
                 {formatDuration(dispatch.duration_minutes)} with total energy infeed of{" "}
                 <strong>{formatEnergy(dispatch.energy_delivered_kwh)}</strong>.
               </p>
             </div>
           </div>
-          <div className="bg-white px-4 py-2 rounded-lg border border-emerald-200 text-right shrink-0">
-            <span className="text-[10px] uppercase font-bold text-slate-500 block">
+          <div className="bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/90 text-right shrink-0 shadow-xs">
+            <span className="text-[10px] uppercase font-bold text-[#193029]/60 block">
               Total Calculated Incentive
             </span>
-            <span className="text-xl font-bold text-emerald-700 tech-mono">
+            <span className="text-xl font-bold text-[#659287] tech-mono">
               {formatCurrency(dispatch.total_incentive)}
             </span>
           </div>

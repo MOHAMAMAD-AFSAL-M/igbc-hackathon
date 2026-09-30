@@ -38,22 +38,22 @@ export function TopNav({
   ];
 
   return (
-    <header className="sticky top-0 z-20 flex h-16 w-full items-center justify-between border-b border-slate-200 bg-white/95 px-4 sm:px-6 backdrop-blur-md">
+    <header className="sticky top-0 z-20 flex h-16 w-full items-center justify-between glass-nav px-4 sm:px-6">
       <div className="flex items-center gap-3">
         {onOpenMobile && (
           <button
             onClick={onOpenMobile}
-            className="md:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100"
+            className="md:hidden p-2 rounded-lg text-[#28483f] hover:bg-[#88BDA4]/20 transition-colors"
           >
             <Menu className="w-5 h-5" />
           </button>
         )}
         <div className="flex items-center gap-2">
-          <span className="hidden sm:inline-block font-semibold text-slate-800 text-sm">
+          <span className="hidden sm:inline-block font-bold text-[#193029] text-sm">
             {title}
           </span>
-          <span className="hidden md:inline-block text-slate-300">|</span>
-          <span className="text-xs text-slate-500 font-medium hidden md:inline-block">
+          <span className="hidden md:inline-block text-[#88BDA4]">|</span>
+          <span className="text-xs text-[#52796f] font-medium hidden md:inline-block">
             State Load Dispatch Center (SLDC)
           </span>
         </div>
@@ -66,46 +66,46 @@ export function TopNav({
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+            className="relative p-2 rounded-xl text-[#28483f] hover:bg-[#88BDA4]/20 transition-colors border border-transparent hover:border-[#88BDA4]/30"
             title="Grid Alerts & Notifications"
           >
             <Bell className="w-4 h-4" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl border border-slate-200 bg-white p-4 shadow-xl z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl glass-panel p-4 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-150 border border-white/80">
+              <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20">
                 <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-bold text-slate-900">Grid Notifications</h4>
-                  <span className="px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">
+                  <h4 className="text-sm font-bold text-[#193029]">Grid Notifications</h4>
+                  <span className="px-2 py-0.5 rounded-full bg-[#88BDA4]/30 text-[#193029] text-[10px] font-bold">
                     3 new
                   </span>
                 </div>
                 <button
                   onClick={() => setShowNotifications(false)}
-                  className="text-slate-400 hover:text-slate-600"
+                  className="text-slate-400 hover:text-slate-700"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="divide-y divide-slate-100 max-h-72 overflow-y-auto">
+              <div className="divide-y divide-[#88BDA4]/15 max-h-72 overflow-y-auto">
                 {notifications.map((item) => (
                   <div key={item.id} className="py-2.5 text-left">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-slate-900">{item.title}</span>
-                      <span className="text-[10px] text-slate-400">{item.time}</span>
+                      <span className="text-xs font-semibold text-[#193029]">{item.title}</span>
+                      <span className="text-[10px] text-slate-500">{item.time}</span>
                     </div>
-                    <p className="mt-0.5 text-xs text-slate-600">{item.desc}</p>
+                    <p className="mt-0.5 text-xs text-[#3a6055]">{item.desc}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-2 text-center border-t border-slate-100">
+              <div className="pt-2 text-center border-t border-[#88BDA4]/20">
                 <button
                   onClick={() => setShowNotifications(false)}
-                  className="text-xs font-medium text-blue-600 hover:underline"
+                  className="text-xs font-semibold text-[#659287] hover:text-[#52796f] transition-colors"
                 >
                   Mark all as read
                 </button>
@@ -115,13 +115,13 @@ export function TopNav({
         </div>
 
         {/* Operator Profile Chip */}
-        <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-          <div className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-2xs">
+        <div className="flex items-center gap-2.5 pl-3 border-l border-[#88BDA4]/30">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#659287] to-[#88BDA4] text-white flex items-center justify-center font-bold text-xs shadow-sm border border-white/40">
             KO
           </div>
           <div className="hidden lg:block text-left text-xs">
-            <p className="font-semibold text-slate-800">Operator 04</p>
-            <p className="text-[10px] text-slate-500">KSEB SLDC</p>
+            <p className="font-bold text-[#193029]">Operator 04</p>
+            <p className="text-[10px] text-[#52796f]">KSEB SLDC</p>
           </div>
         </div>
       </div>

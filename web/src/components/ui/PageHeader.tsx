@@ -27,18 +27,18 @@ export function PageHeader({
               <React.Fragment key={idx}>
                 {idx > 0 && <span className="text-slate-300">/</span>}
                 {crumb.href ? (
-                  <a href={crumb.href} className="hover:text-blue-600 transition-colors">
+                  <a href={crumb.href} className="hover:text-[#659287] transition-colors">
                     {crumb.label}
                   </a>
                 ) : (
-                  <span className="text-slate-700 font-semibold">{crumb.label}</span>
+                  <span className="text-[#193029] font-semibold">{crumb.label}</span>
                 )}
               </React.Fragment>
             ))}
           </nav>
         )}
         <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-[#193029] sm:text-3xl">
             {title}
           </h1>
           {badge}

@@ -2,45 +2,63 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
-    --radius: 0.5rem;
+    --primary: 167 18% 48%; /* #659287 */
+    --secondary: 152 29% 64%; /* #88BDA4 */
+    --radius: 0.75rem;
   }
 }
 
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(136, 189, 164, 0.22) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(101, 146, 135, 0.20) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, #f0f6f3 0%, #e8f2ed 50%, #eff7f3 100%);
+  background-attachment: fixed;
+  color: #193029;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
-/* Custom technical energy grid styling */
+/* Glassmorphism Panel Foundation */
+.tech-panel,
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 8px 32px 0 rgba(101, 146, 135, 0.12),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.glass-panel-subtle {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 20px 0 rgba(101, 146, 135, 0.08);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(136, 189, 164, 0.25);
+  box-shadow: 0 4px 24px -1px rgba(101, 146, 135, 0.08);
+}
+
+.glass-sidebar {
+  background: linear-gradient(180deg, rgba(25, 48, 41, 0.95) 0%, rgba(20, 38, 33, 0.97) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(136, 189, 164, 0.2);
+  box-shadow: 4px 0 32px 0 rgba(10, 24, 20, 0.25);
+}
+
 .tech-border {
-  border: 1px solid #e2e8f0;
-}
-
-.tech-panel {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(136, 189, 164, 0.3);
 }
 
 .tech-mono {
@@ -49,30 +67,58 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Live Pulse Indicator */
-@keyframes radar-pulse {
+/* Glass Button with Theme Palette */
+.btn-primary-theme {
+  background: linear-gradient(135deg, #659287 0%, #52796f 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px 0 rgba(101, 146, 135, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-primary-theme:hover {
+  background: linear-gradient(135deg, #71a297 0%, #5d877c 100%);
+  box-shadow: 0 6px 20px 0 rgba(101, 146, 135, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-theme {
+  background: rgba(136, 189, 164, 0.18);
+  color: #28483f;
+  border: 1px solid rgba(136, 189, 164, 0.4);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-theme:hover {
+  background: rgba(136, 189, 164, 0.3);
+  color: #193029;
+}
+
+/* Live Pulse Indicator in #88BDA4 / #659287 */
+@keyframes radar-pulse-theme {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 0 0 rgba(136, 189, 164, 0.8);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 9px rgba(101, 146, 135, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 0 rgba(101, 146, 135, 0);
   }
 }
 
 .radar-live {
-  animation: radar-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  animation: radar-pulse-theme 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 /* Leaflet Container overrides */
 .leaflet-container {
   width: 100%;
   height: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   z-index: 10;
 }

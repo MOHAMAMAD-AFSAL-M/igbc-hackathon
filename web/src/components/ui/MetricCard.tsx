@@ -21,38 +21,56 @@ export function MetricCard({
   className,
 }: MetricCardProps) {
   const accentClasses = {
-    blue: "border-l-blue-600 text-blue-600 bg-blue-50/50",
-    green: "border-l-emerald-600 text-emerald-600 bg-emerald-50/50",
-    amber: "border-l-amber-500 text-amber-600 bg-amber-50/50",
-    rose: "border-l-rose-600 text-rose-600 bg-rose-50/50",
-    slate: "border-l-slate-600 text-slate-600 bg-slate-50/50",
+    blue: "border-l-[#659287] before:bg-[#659287]/10",
+    green: "border-l-[#88BDA4] before:bg-[#88BDA4]/15",
+    amber: "border-l-amber-500 before:bg-amber-500/10",
+    rose: "border-l-rose-500 before:bg-rose-500/10",
+    slate: "border-l-[#52796f] before:bg-[#52796f]/10",
+  };
+
+  const iconAccent = {
+    blue: "text-[#659287] bg-[#659287]/15 border-[#659287]/30",
+    green: "text-[#52796f] bg-[#88BDA4]/25 border-[#88BDA4]/40",
+    amber: "text-amber-700 bg-amber-100 border-amber-300",
+    rose: "text-rose-700 bg-rose-100 border-rose-300",
+    slate: "text-[#193029] bg-white/80 border-[#88BDA4]/30",
   };
 
   return (
     <div
       className={cn(
-        "tech-panel rounded-lg p-5 border-l-4 transition-all duration-200 hover:shadow-md",
+        "glass-panel rounded-2xl p-5 border-l-4 transition-all duration-300 hover:shadow-xl relative overflow-hidden group",
         accentClasses[accentColor],
         className
       )}
     >
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+      {/* Subtle top corner glass reflection */}
+      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/60 to-transparent rounded-bl-full pointer-events-none" />
+
+      <div className="flex items-center justify-between relative z-10">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#3a6055]">
           {title}
         </span>
         {Icon && (
-          <div className="p-2 rounded-md bg-white border border-slate-200 shadow-2xs">
-            <Icon className="w-4 h-4 text-slate-700" />
+          <div
+            className={cn(
+              "p-2.5 rounded-xl border backdrop-blur-md shadow-xs transition-transform group-hover:scale-105",
+              iconAccent[accentColor]
+            )}
+          >
+            <Icon className="w-4 h-4" />
           </div>
         )}
       </div>
-      <div className="mt-2 flex items-baseline gap-2">
-        <span className="text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 tech-mono">
+
+      <div className="mt-2.5 flex items-baseline gap-2 relative z-10">
+        <span className="text-2xl lg:text-3xl font-extrabold tracking-tight text-[#193029] tech-mono">
           {value}
         </span>
       </div>
+
       {subtitle && (
-        <p className="mt-1 text-xs text-slate-500 font-medium flex items-center gap-1">
+        <p className="mt-1 text-xs text-[#52796f] font-medium flex items-center gap-1 relative z-10">
           {subtitle}
         </p>
       )}

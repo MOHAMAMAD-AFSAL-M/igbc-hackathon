@@ -83,15 +83,15 @@ export default function ProsumersPage() {
       </div>
 
       {/* Filter and Search */}
-      <div className="tech-panel rounded-xl p-4 border border-slate-200 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="glass-panel rounded-2xl p-4 border border-white/80 shadow-md mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+          <Search className="w-4 h-4 text-[#659287] absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Search by code, client name, or cluster..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 text-xs bg-white/70 backdrop-blur-md border border-[#88BDA4]/40 rounded-xl text-[#193029] focus:outline-hidden focus:ring-2 focus:ring-[#88BDA4]"
           />
         </div>
 
@@ -99,7 +99,7 @@ export default function ProsumersPage() {
           <select
             value={clusterFilter}
             onChange={(e) => setClusterFilter(e.target.value)}
-            className="py-1.5 px-2.5 text-xs bg-slate-100 border border-slate-200 rounded-md text-slate-700 font-semibold focus:outline-hidden"
+            className="py-1.5 px-3 text-xs bg-white/70 backdrop-blur-md border border-[#88BDA4]/40 rounded-xl text-[#193029] font-semibold focus:outline-hidden focus:ring-2 focus:ring-[#88BDA4]"
           >
             <option value="ALL">All Clusters</option>
             {clusters.map((c) => (
@@ -112,7 +112,7 @@ export default function ProsumersPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="py-1.5 px-2.5 text-xs bg-slate-100 border border-slate-200 rounded-md text-slate-700 font-semibold focus:outline-hidden"
+            className="py-1.5 px-3 text-xs bg-white/70 backdrop-blur-md border border-[#88BDA4]/40 rounded-xl text-[#193029] font-semibold focus:outline-hidden focus:ring-2 focus:ring-[#88BDA4]"
           >
             <option value="ALL">All Statuses</option>
             <option value="AVAILABLE">Available</option>

@@ -21,27 +21,29 @@ export function TelemetryChart({ data }: { data: ProsumerTelemetryPoint[] }) {
           data={data}
           margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#88bda4" strokeOpacity={0.15} vertical={false} />
           <XAxis
             dataKey="time"
-            stroke="#94a3b8"
+            stroke="#52796f"
             fontSize={12}
             tickLine={false}
-            axisLine={{ stroke: "#e2e8f0" }}
+            axisLine={{ stroke: "rgba(136, 189, 164, 0.3)" }}
           />
           <YAxis
-            stroke="#94a3b8"
+            stroke="#52796f"
             fontSize={12}
             tickLine={false}
             axisLine={false}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#ffffff",
-              borderColor: "#e2e8f0",
-              borderRadius: "0.5rem",
-              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              backgroundColor: "rgba(255, 255, 255, 0.85)",
+              backdropFilter: "blur(12px)",
+              borderColor: "rgba(136, 189, 164, 0.4)",
+              borderRadius: "0.75rem",
+              boxShadow: "0 8px 32px 0 rgba(101, 146, 135, 0.15)",
               fontSize: "12px",
+              color: "#193029",
             }}
           />
           <Legend
@@ -49,32 +51,32 @@ export function TelemetryChart({ data }: { data: ProsumerTelemetryPoint[] }) {
             align="right"
             height={36}
             iconType="circle"
-            wrapperStyle={{ fontSize: "12px", color: "#64748b" }}
+            wrapperStyle={{ fontSize: "12px", color: "#3a6055" }}
           />
 
           <Line
             type="monotone"
             dataKey="soc"
             name="State of Charge (%)"
-            stroke="#10b981"
-            strokeWidth={2.5}
-            dot={{ r: 3 }}
+            stroke="#659287"
+            strokeWidth={3}
+            dot={{ r: 3, fill: "#659287" }}
           />
           <Line
             type="monotone"
             dataKey="solarKw"
             name="Solar Generation (kW)"
-            stroke="#f59e0b"
+            stroke="#d97706"
             strokeWidth={2}
-            dot={{ r: 3 }}
+            dot={{ r: 3, fill: "#d97706" }}
           />
           <Line
             type="monotone"
             dataKey="batteryKw"
             name="Battery Power (kW)"
-            stroke="#3b82f6"
-            strokeWidth={2}
-            dot={{ r: 3 }}
+            stroke="#88BDA4"
+            strokeWidth={2.5}
+            dot={{ r: 3, fill: "#88BDA4" }}
           />
         </LineChart>
       </ResponsiveContainer>

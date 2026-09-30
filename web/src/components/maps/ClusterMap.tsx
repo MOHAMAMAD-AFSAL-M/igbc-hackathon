@@ -10,9 +10,9 @@ const LeafletClusterMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-[420px] rounded-xl border border-slate-200 bg-slate-100 flex flex-col items-center justify-center text-slate-500">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600 mb-2" />
-        <span className="text-sm font-medium">Loading Kerala VPP Grid Map...</span>
+      <div className="w-full h-[420px] rounded-2xl border border-white/80 bg-white/60 backdrop-blur-md flex flex-col items-center justify-center text-slate-500">
+        <Loader2 className="w-8 h-8 animate-spin text-[#659287] mb-2" />
+        <span className="text-sm font-medium text-[#193029]">Loading Kerala VPP Grid Map...</span>
       </div>
     ),
   }

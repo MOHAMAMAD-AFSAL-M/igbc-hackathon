@@ -79,14 +79,14 @@ export default function DashboardOverviewPage() {
           <div className="flex items-center gap-2.5">
             <button
               onClick={loadData}
-              className="p-2 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-colors"
+              className="p-2 rounded-xl border border-white/80 bg-white/70 backdrop-blur-md text-[#193029] hover:bg-[#88BDA4]/15 transition-all shadow-xs cursor-pointer"
               title="Refresh telemetry"
             >
               <RefreshCw className="w-4 h-4" />
             </button>
             <Link
               href="/dashboard/dispatch/new"
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+              className="btn-primary-theme inline-flex items-center gap-2 text-sm font-semibold shadow-md"
             >
               <Zap className="w-4 h-4 fill-white" />
               Request Grid Support
@@ -102,17 +102,17 @@ export default function DashboardOverviewPage() {
       <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Interactive Map */}
         <div className="lg:col-span-7 flex flex-col space-y-6">
-          <div className="tech-panel rounded-xl p-5 border border-slate-200">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md">
+            <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20 mb-3">
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
                   Regional Cluster Distribution Map
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Realtime prosumer aggregations and substation feeder nodes across Kerala
                 </p>
               </div>
-              <span className="text-xs font-semibold text-slate-500 tech-mono">
+              <span className="text-xs font-semibold text-[#659287] tech-mono bg-[#88BDA4]/15 px-2.5 py-1 rounded-full border border-[#88BDA4]/30">
                 {clusters.length} Active Nodes
               </span>
             </div>
@@ -120,17 +120,17 @@ export default function DashboardOverviewPage() {
           </div>
 
           {/* Capacity Trends Chart */}
-          <div className="tech-panel rounded-xl p-5 border border-slate-200">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md">
+            <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20 mb-3">
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
                   Distributed Capacity & Infeed
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Available VPP battery reserve vs requested & delivered power
                 </p>
               </div>
-              <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 tech-mono">
+              <span className="text-xs font-semibold text-[#659287] bg-[#88BDA4]/20 px-2.5 py-1 rounded-full border border-[#88BDA4]/40 tech-mono">
                 642 kW Online
               </span>
             </div>
