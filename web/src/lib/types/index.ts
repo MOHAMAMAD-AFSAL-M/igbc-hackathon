@@ -157,3 +157,33 @@ export interface DashboardKPIData {
   activeSupportKw: number;
   activeRequestsCount: number;
 }
+
+export interface GridRegion {
+  id: string;
+  name: string;
+  zone: string;
+  districts: string[];
+  current_load_mw: number;
+  baseline_supply_mw: number;
+  predicted_peak_mw: number;
+  voltage_kv: number;
+  frequency_hz: number;
+  power_factor: number;
+  status: GridStatus;
+  vpp_hybrid_capacity_mw: number;
+  enrolled_hybrid_prosumers: number;
+  cluster_ids: string[];
+}
+
+export interface GridVitals {
+  system_frequency_hz: number;
+  nominal_voltage_kv: number;
+  current_voltage_kv: number;
+  voltage_deviation_percent: number;
+  total_demand_mw: number;
+  baseline_supply_mw: number;
+  predicted_peak_mw: number;
+  predicted_deficit_mw: number;
+  vpp_total_reserve_mw: number;
+  system_power_factor: number;
+}

@@ -3,54 +3,33 @@
 import React, { useEffect, useState } from "react";
 import { DashboardShell } from "@/components/layout/DashboardShell";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { KPICards } from "@/components/dashboard/KPICards";
-import { GridStressPanel } from "@/components/dashboard/GridStressPanel";
-import { ActiveDispatchPanel } from "@/components/dashboard/ActiveDispatchPanel";
-import { LiveResponseMonitor } from "@/components/dashboard/LiveResponseMonitor";
-import { RecentEventsTable } from "@/components/dashboard/RecentEventsTable";
-import { CapacityChart } from "@/components/charts/CapacityChart";
-import { ClusterMap } from "@/components/maps/ClusterMap";
-import { getDashboardKPIs, getDispatches, getDispatchParticipants } from "@/lib/api/dispatch";
+import { GridVitalsBanner } from "@/components/dashboard/GridVitalsBanner";
+import { RegionalCapacityPanel } from "@/components/dashboard/RegionalCapacityPanel";
+import { HybridClustersPanel } from "@/components/dashboard/HybridClustersPanel";
+import { PastEventsSummary } from "@/components/dashboard/PastEventsSummary";
+import { MobileDispatchModal } from "@/components/dashboard/MobileDispatchModal";
 import { getClusters } from "@/lib/api/clusters";
 import { getEvents } from "@/lib/api/events";
-import { getCapacitySeries } from "@/lib/api/telemetry";
 import { mockStore } from "@/lib/mock/mockStore";
-import { Cluster, DispatchRequest, DispatchParticipant, DashboardKPIData } from "@/lib/types";
+import { MOCK_GRID_VITALS, MOCK_REGIONS } from "@/lib/mock/regions";
+import { Cluster, GridRegion } from "@/lib/types";
 import { VPPEventHistoryItem } from "@/lib/mock/events";
-import { CapacityChartPoint } from "@/lib/mock/telemetry";
-import Link from "next/link";
 import { Zap, RefreshCw } from "lucide-react";
 
 export default function DashboardOverviewPage() {
-  const [kpiData, setKpiData] = useState<DashboardKPIData | null>(null);
   const [clusters, setClusters] = useState<Cluster[]>([]);
-  const [dispatches, setDispatches] = useState<DispatchRequest[]>([]);
-  const [participants, setParticipants] = useState<DispatchParticipant[]>([]);
   const [events, setEvents] = useState<VPPEventHistoryItem[]>([]);
-  const [capacitySeries, setCapacitySeries] = useState<CapacityChartPoint[]>([]);
+  const [selectedRegionId, setSelectedRegionId] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTargetCluster, setModalTargetCluster] = useState<Cluster | null>(null);
+  const [modalTargetRegion, setModalTargetRegion] = useState<GridRegion | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const loadData = async () => {
     try {
-      const [kpis, cls, disps, evts, series] = await Promise.all([
-        getDashboardKPIs(),
-        getClusters(),
-        getDispatches(),
-        getEvents(),
-        getCapacitySeries(),
-      ]);
-      setKpiData(kpis);
+      const [cls, evts] = await Promise.all([getClusters(), getEvents()]);
       setClusters(cls);
-      setDispatches(disps);
       setEvents(evts);
-      setCapacitySeries(series);
-
-      // Get participants for first active dispatch
-      const activeDisp = disps.find((d) => d.status === "ACTIVE") || disps[0];
-      if (activeDisp) {
-        const parts = await getDispatchParticipants(activeDisp.id);
-        setParticipants(parts);
-      }
     } catch (err) {
       console.error("Dashboard data load error", err);
     } finally {
@@ -61,7 +40,7 @@ export default function DashboardOverviewPage() {
   useEffect(() => {
     loadData();
 
-    // Subscribe to reactive store for live telemetry/dispatch updates
+    // Subscribe to reactive store for live telemetry updates
     const unsubscribe = mockStore.subscribe(() => {
       loadData();
     });
@@ -69,12 +48,40 @@ export default function DashboardOverviewPage() {
     return () => unsubscribe();
   }, []);
 
+  // Filter clusters if a region is selected
+  const activeRegion = MOCK_REGIONS.find((r) => r.id === selectedRegionId);
+  const displayedClusters = activeRegion
+    ? clusters.filter((c) => activeRegion.cluster_ids.includes(c.id))
+    : clusters;
+
+  const handleOpenRegionSupport = (region: GridRegion) => {
+    setModalTargetRegion(region);
+    const firstCluster = clusters.find((c) => region.cluster_ids.includes(c.id)) || clusters[0];
+    setModalTargetCluster(firstCluster);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenClusterSupport = (cluster: Cluster) => {
+    setModalTargetCluster(cluster);
+    const parentRegion = MOCK_REGIONS.find((r) => r.cluster_ids.includes(cluster.id)) || null;
+    setModalTargetRegion(parentRegion);
+    setIsModalOpen(true);
+  };
+
+  const handleGlobalSupportClick = () => {
+    // Default to the highest stress cluster (Kalamassery)
+    const stressedCluster = clusters.find((c) => c.grid_status === "HIGH_STRESS") || clusters[0];
+    setModalTargetCluster(stressedCluster);
+    setModalTargetRegion(MOCK_REGIONS[1]); // Region 2: Central Zone
+    setIsModalOpen(true);
+  };
+
   return (
-    <DashboardShell pageTitle="VPP Overview">
-      {/* Header */}
+    <DashboardShell pageTitle="State Load Dispatch Command Center">
+      {/* Page Header */}
       <PageHeader
-        title="VPP Overview"
-        description="Monitor distributed energy capacity, grid stress, and active support events across Kerala electrical substations."
+        title="State Load Dispatch Command Center"
+        description="Undistributed Energy Management System (UEMS) & Decentralized VPP Coordination for Kerala State Electricity Board."
         actions={
           <div className="flex items-center gap-2.5">
             <button
@@ -84,72 +91,53 @@ export default function DashboardOverviewPage() {
             >
               <RefreshCw className="w-4 h-4" />
             </button>
-            <Link
-              href="/dashboard/dispatch/new"
-              className="btn-primary-theme inline-flex items-center gap-2 text-sm font-semibold shadow-md"
+            <button
+              onClick={handleGlobalSupportClick}
+              className="btn-primary-theme inline-flex items-center gap-2 text-sm font-semibold shadow-md cursor-pointer"
             >
               <Zap className="w-4 h-4 fill-white" />
               Request Grid Support
-            </Link>
+            </button>
           </div>
         }
       />
 
-      {/* KPI Cards Row */}
-      {kpiData && <KPICards data={kpiData} />}
+      {/* Section 1: Grid Telemetry Vitals & AI Load Prediction */}
+      <GridVitalsBanner vitals={MOCK_GRID_VITALS} />
 
-      {/* Main Grid: Map & Stress Panel */}
-      <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Interactive Map */}
-        <div className="lg:col-span-7 flex flex-col space-y-6">
-          <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md">
-            <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20 mb-3">
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
-                  Regional Cluster Distribution Map
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Realtime prosumer aggregations and substation feeder nodes across Kerala
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-[#659287] tech-mono bg-[#88BDA4]/15 px-2.5 py-1 rounded-full border border-[#88BDA4]/30">
-                {clusters.length} Active Nodes
-              </span>
-            </div>
-            <ClusterMap clusters={clusters} height="390px" />
-          </div>
-
-          {/* Capacity Trends Chart */}
-          <div className="glass-panel rounded-2xl p-5 border border-white/80 shadow-md">
-            <div className="flex items-center justify-between pb-3 border-b border-[#88BDA4]/20 mb-3">
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
-                  Distributed Capacity & Infeed
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  Available VPP battery reserve vs requested & delivered power
-                </p>
-              </div>
-              <span className="text-xs font-semibold text-[#659287] bg-[#88BDA4]/20 px-2.5 py-1 rounded-full border border-[#88BDA4]/40 tech-mono">
-                642 kW Online
-              </span>
-            </div>
-            <CapacityChart data={capacitySeries} />
-          </div>
-        </div>
-
-        {/* Right Column: Grid Stress & Active Dispatch */}
-        <div className="lg:col-span-5 flex flex-col space-y-6">
-          <GridStressPanel clusters={clusters} />
-          <ActiveDispatchPanel dispatches={dispatches} />
-          <LiveResponseMonitor participants={participants} />
-        </div>
+      {/* Section 2: Regional Demand vs Baseline Supply Planning (Region 1, Region 2, Region 3) */}
+      <div className="mt-8">
+        <RegionalCapacityPanel
+          regions={MOCK_REGIONS}
+          selectedRegionId={selectedRegionId}
+          onSelectRegion={setSelectedRegionId}
+          onRequestSupport={handleOpenRegionSupport}
+        />
       </div>
 
-      {/* Recent Events Table */}
-      <div className="mt-6">
-        <RecentEventsTable events={events} />
+      {/* Section 3: Enrolled Renewable Energy Hybrid Clusters (VPP Nodes) */}
+      <div className="mt-8">
+        <HybridClustersPanel
+          clusters={displayedClusters}
+          selectedRegionName={activeRegion?.name}
+          onRequestClusterSupport={handleOpenClusterSupport}
+        />
       </div>
+
+      {/* Section 4: Past Events & Historical Usage */}
+      <div className="mt-8">
+        <PastEventsSummary events={events} />
+      </div>
+
+      {/* Interactive Mobile Dispatch & Central IoT Inverter Handshake Modal */}
+      <MobileDispatchModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        cluster={modalTargetCluster}
+        region={modalTargetRegion}
+        allClusters={clusters}
+        onDispatchCreated={() => loadData()}
+      />
     </DashboardShell>
   );
 }
