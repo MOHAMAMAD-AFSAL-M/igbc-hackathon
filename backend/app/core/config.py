@@ -3,6 +3,7 @@ Configuration loading for KSEB VPP backend.
 Reads Supabase credentials from .env file.
 """
 import os
+# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 
 # Load .env from the backend/app directory

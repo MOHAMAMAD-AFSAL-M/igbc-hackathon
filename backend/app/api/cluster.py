@@ -1,6 +1,7 @@
 """
 Cluster API routes.
 """
+# pyrefly: ignore [missing-import]
 from fastapi import APIRouter, HTTPException
 from ..services import cluster_service
 
