@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
+
 @layer base {
   :root {
     --primary: 167 18% 48%; /* #659287 */
     --secondary: 152 29% 64%; /* #88BDA4 */
     --radius: 0.75rem;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 }
 
@@ -16,9 +19,15 @@ body {
     linear-gradient(135deg, #f0f6f3 0%, #e8f2ed 50%, #eff7f3 100%);
   background-attachment: fixed;
   color: #193029;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 /* Glassmorphism Panel Foundation */
@@ -45,7 +54,7 @@ body {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(136, 189, 164, 0.25);
+  border: 1px solid rgba(136, 189, 164, 0.25);
   box-shadow: 0 4px 24px -1px rgba(101, 146, 135, 0.08);
 }
 
@@ -74,6 +83,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 4px 14px 0 rgba(101, 146, 135, 0.35);
   transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.75rem;
 }
 
 .btn-primary-theme:hover {
@@ -82,17 +94,45 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-primary-theme:focus-visible {
+  outline: 2px solid #88BDA4;
+  outline-offset: 2px;
+}
+
+.btn-primary-theme:active {
+  transform: translateY(0) scale(0.98);
+}
+
 .btn-secondary-theme {
   background: rgba(136, 189, 164, 0.18);
   color: #28483f;
   border: 1px solid rgba(136, 189, 164, 0.4);
   backdrop-filter: blur(8px);
   transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.75rem;
 }
 
 .btn-secondary-theme:hover {
   background: rgba(136, 189, 164, 0.3);
   color: #193029;
+}
+
+.btn-secondary-theme:focus-visible {
+  outline: 2px solid #88BDA4;
+  outline-offset: 2px;
+}
+
+/* Global Focus Visible Ring for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #88BDA4;
+  outline-offset: 2px;
+  border-radius: 0.5rem;
 }
 
 /* Live Pulse Indicator in #88BDA4 / #659287 */
@@ -113,6 +153,20 @@ body {
 
 .radar-live {
   animation: radar-pulse-theme 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Prefers Reduced Motion — disable all non-essential animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .radar-live {
+    animation: none;
+  }
 }
 
 /* Leaflet Container overrides */

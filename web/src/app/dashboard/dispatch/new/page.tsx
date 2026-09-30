@@ -116,7 +116,7 @@ function CreateDispatchContent() {
                     onChange={(e) => setTargetKw(Number(e.target.value))}
                     className="w-full py-2.5 px-3 bg-white/70 backdrop-blur-md border border-[#88BDA4]/40 rounded-xl text-sm text-[#193029] tech-mono font-bold focus:outline-hidden focus:ring-2 focus:ring-[#88BDA4]"
                   />
-                  <span className="absolute right-3 top-2.5 text-xs text-slate-400 font-bold tech-mono">
+                  <span className="absolute right-3 top-2.5 text-xs text-[#3a6055] font-bold tech-mono">
                     kW
                   </span>
                 </div>
@@ -247,7 +247,7 @@ function CreateDispatchContent() {
               <div className="mt-4 space-y-4">
                 <div>
                   <h4 className="text-lg font-bold text-[#193029]">{activeCluster.name}</h4>
-                  <p className="text-xs text-slate-500">{activeCluster.substation}</p>
+                  <p className="text-xs text-[#3a6055]">{activeCluster.substation}</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 text-xs">
@@ -270,8 +270,8 @@ function CreateDispatchContent() {
                   </div>
 
                   <div className="p-3 rounded-xl bg-white/60 border border-white/80 backdrop-blur-sm">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5 text-slate-400" /> Eligible Prosumers
+                    <span className="text-[10px] uppercase font-bold text-[#3a6055] flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5 text-[#3a6055]" /> Eligible Prosumers
                     </span>
                     <span className="text-xl font-bold text-[#193029] tech-mono mt-1 block">
                       {activeCluster.prosumer_count}
@@ -279,8 +279,8 @@ function CreateDispatchContent() {
                   </div>
 
                   <div className="p-3 rounded-xl bg-white/60 border border-white/80 backdrop-blur-sm">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1">
-                      <Activity className="w-3.5 h-3.5 text-slate-400" /> Average SoC
+                    <span className="text-[10px] uppercase font-bold text-[#3a6055] flex items-center gap-1">
+                      <Activity className="w-3.5 h-3.5 text-[#3a6055]" /> Average SoC
                     </span>
                     <span className="text-xl font-bold text-[#193029] tech-mono mt-1 block">
                       {formatPercent(activeCluster.average_soc)}
@@ -288,7 +288,7 @@ function CreateDispatchContent() {
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-white/60 border border-white/80 backdrop-blur-sm text-xs text-slate-600 space-y-2">
+                <div className="p-3.5 rounded-xl bg-white/60 border border-white/80 backdrop-blur-sm text-xs text-[#28483f] space-y-2">
                   <div className="flex justify-between">
                     <span>Substation Feeder Load:</span>
                     <strong className="text-[#193029] tech-mono">{formatPower(activeCluster.current_load_kw)}</strong>
@@ -306,7 +306,7 @@ function CreateDispatchContent() {
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-slate-400 py-6 text-center">Loading cluster telemetry...</p>
+              <p className="text-xs text-[#3a6055] py-6 text-center">Loading cluster telemetry...</p>
             )}
           </div>
         </div>
@@ -320,7 +320,7 @@ export default function CreateDispatchPage() {
     <Suspense
       fallback={
         <DashboardShell pageTitle="Request Grid Support">
-          <div className="flex flex-col items-center justify-center py-20 text-slate-500">
+          <div className="flex flex-col items-center justify-center py-20 text-[#3a6055]">
             <Loader2 className="w-8 h-8 animate-spin text-[#659287] mb-2" />
             <span className="text-sm font-medium">Loading Dispatch Parameters...</span>
           </div>

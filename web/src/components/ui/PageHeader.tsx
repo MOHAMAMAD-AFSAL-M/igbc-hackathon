@@ -22,7 +22,7 @@ export function PageHeader({
     <div className={cn("mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between", className)}>
       <div>
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav className="mb-1.5 flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+          <nav className="mb-1.5 flex items-center gap-1.5 text-xs text-[#3a6055] font-medium">
             {breadcrumbs.map((crumb, idx) => (
               <React.Fragment key={idx}>
                 {idx > 0 && <span className="text-slate-300">/</span>}
@@ -44,7 +44,7 @@ export function PageHeader({
           {badge}
         </div>
         {description && (
-          <p className="mt-1 text-sm text-slate-500 max-w-3xl">
+          <p className="mt-1 text-sm text-[#3a6055] max-w-3xl">
             {description}
           </p>
         )}

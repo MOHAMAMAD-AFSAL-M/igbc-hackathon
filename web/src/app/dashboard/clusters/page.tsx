@@ -49,7 +49,7 @@ export default function ClustersPage() {
                 className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                   viewMode === "table"
                     ? "bg-[#659287] text-white shadow-xs"
-                    : "text-slate-600 hover:bg-[#88BDA4]/15"
+                    : "text-[#28483f] hover:bg-[#88BDA4]/15"
                 }`}
               >
                 <List className="w-3.5 h-3.5" /> Table
@@ -59,7 +59,7 @@ export default function ClustersPage() {
                 className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                   viewMode === "cards"
                     ? "bg-[#659287] text-white shadow-xs"
-                    : "text-slate-600 hover:bg-[#88BDA4]/15"
+                    : "text-[#28483f] hover:bg-[#88BDA4]/15"
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" /> Cards
@@ -69,7 +69,7 @@ export default function ClustersPage() {
                 className={`p-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                   viewMode === "map"
                     ? "bg-[#659287] text-white shadow-xs"
-                    : "text-slate-600 hover:bg-[#88BDA4]/15"
+                    : "text-[#28483f] hover:bg-[#88BDA4]/15"
                 }`}
               >
                 <MapPin className="w-3.5 h-3.5" /> Map

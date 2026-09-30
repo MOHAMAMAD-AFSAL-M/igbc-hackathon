@@ -39,7 +39,7 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
     return (
       <DashboardShell pageTitle="Prosumer Not Found">
         <div className="text-center py-12">
-          <p className="text-slate-600">Prosumer {prosumerId} could not be found.</p>
+          <p className="text-[#28483f]">Prosumer {prosumerId} could not be found.</p>
           <Link href="/dashboard/prosumers" className="text-[#659287] font-semibold mt-2 inline-block">
             Back to Prosumers
           </Link>
@@ -110,7 +110,7 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
             <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
               Live Inverter Telemetry Curves
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-[#3a6055] mt-0.5">
               Simulated real-time battery SoC progression, solar PV generation, and discharge output
             </p>
           </div>
@@ -135,21 +135,21 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
             <div className="py-2.5 flex items-center justify-between">
               <div>
                 <span className="font-bold text-[#193029] tech-mono">DSP-1001</span>
-                <p className="text-[11px] text-slate-500">Kalamassery Peak Mitigation</p>
+                <p className="text-[11px] text-[#3a6055]">Kalamassery Peak Mitigation</p>
               </div>
               <div className="text-right">
                 <span className="font-bold text-[#659287] tech-mono">4.8 kW delivered</span>
-                <p className="text-[10px] text-slate-400">Today, 12:30</p>
+                <p className="text-[10px] text-[#3a6055]">Today, 12:30</p>
               </div>
             </div>
             <div className="py-2.5 flex items-center justify-between">
               <div>
                 <span className="font-bold text-[#193029] tech-mono">DSP-0998</span>
-                <p className="text-[11px] text-slate-500">Feeders 2 & 4 Relief</p>
+                <p className="text-[11px] text-[#3a6055]">Feeders 2 & 4 Relief</p>
               </div>
               <div className="text-right">
                 <span className="font-bold text-[#659287] tech-mono">5.0 kW delivered</span>
-                <p className="text-[10px] text-slate-400">Yesterday, 17:00</p>
+                <p className="text-[10px] text-[#3a6055]">Yesterday, 17:00</p>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
             <div className="py-2.5 flex items-center justify-between">
               <div>
                 <p className="font-semibold text-[#193029]">DSP-1001 Active Allocation</p>
-                <p className="text-[10px] text-slate-400">₹10.00 / kWh rate</p>
+                <p className="text-[10px] text-[#3a6055]">₹10.00 / kWh rate</p>
               </div>
               <div className="text-right">
                 <span className="font-bold text-[#659287] tech-mono">+₹48.00</span>
@@ -180,7 +180,7 @@ export default function ProsumerDetailsPage({ params }: { params: Promise<{ id: 
             <div className="py-2.5 flex items-center justify-between">
               <div>
                 <p className="font-semibold text-[#193029]">DSP-0998 Completed Event</p>
-                <p className="text-[10px] text-slate-400">10.0 kWh total delivered</p>
+                <p className="text-[10px] text-[#3a6055]">10.0 kWh total delivered</p>
               </div>
               <div className="text-right">
                 <span className="font-bold text-[#193029] tech-mono">+₹100.00</span>

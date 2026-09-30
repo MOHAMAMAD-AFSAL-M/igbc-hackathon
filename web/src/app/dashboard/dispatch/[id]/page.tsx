@@ -88,7 +88,7 @@ export default function DispatchDetailsPage({ params }: { params: Promise<{ id: 
     return (
       <DashboardShell pageTitle="Dispatch Not Found">
         <div className="text-center py-12">
-          <p className="text-slate-600">Dispatch {dispatchId} could not be found.</p>
+          <p className="text-[#28483f]">Dispatch {dispatchId} could not be found.</p>
           <Link href="/dashboard/dispatch" className="text-[#659287] font-semibold mt-2 inline-block">
             Back to Dispatches
           </Link>

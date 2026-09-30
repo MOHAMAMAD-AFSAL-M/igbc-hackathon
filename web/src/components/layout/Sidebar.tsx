@@ -67,7 +67,7 @@ export function Sidebar({
         {setMobileOpen && (
           <button
             onClick={() => setMobileOpen(false)}
-            className="md:hidden text-slate-400 hover:text-white p-1"
+            className="md:hidden text-slate-400 hover:text-white p-1 cursor-pointer transition-colors duration-200"
           >
             <X className="w-6 h-6" />
           </button>
@@ -92,7 +92,7 @@ export function Sidebar({
               href={item.href}
               onClick={() => setMobileOpen && setMobileOpen(false)}
               className={cn(
-                "group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200",
+                "group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer",
                 isActive
                   ? "bg-gradient-to-r from-[#659287] to-[#88BDA4]/90 text-white font-semibold shadow-lg shadow-[#659287]/30 border border-white/20 backdrop-blur-md"
                   : "text-slate-300 hover:text-white hover:bg-white/10"

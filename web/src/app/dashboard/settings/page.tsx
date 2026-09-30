@@ -37,7 +37,7 @@ export default function SettingsPage() {
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
                 Operator Station Profile
               </h3>
-              <p className="text-xs text-slate-500">Authorized SLDC operator identity</p>
+              <p className="text-xs text-[#3a6055]">Authorized SLDC operator identity</p>
             </div>
           </div>
 
@@ -89,7 +89,7 @@ export default function SettingsPage() {
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
                 VPP Grid Support Policy Parameters
               </h3>
-              <p className="text-xs text-slate-500">Economic incentive rates and battery safety reserve policies</p>
+              <p className="text-xs text-[#3a6055]">Economic incentive rates and battery safety reserve policies</p>
             </div>
           </div>
 
@@ -108,7 +108,7 @@ export default function SettingsPage() {
                   className="w-full pl-7 pr-3 py-2 bg-white/70 backdrop-blur-md border border-[#88BDA4]/40 rounded-xl text-[#193029] font-bold tech-mono focus:outline-hidden focus:ring-2 focus:ring-[#88BDA4]"
                 />
               </div>
-              <p className="text-[11px] text-slate-500 mt-1">Paid to prosumers for battery discharge</p>
+              <p className="text-[11px] text-[#3a6055] mt-1">Paid to prosumers for battery discharge</p>
             </div>
 
             <div>
@@ -126,7 +126,7 @@ export default function SettingsPage() {
                 />
                 <span className="absolute right-3 top-2 text-[#659287] font-bold">%</span>
               </div>
-              <p className="text-[11px] text-slate-500 mt-1">Safeguards home battery emergency buffer</p>
+              <p className="text-[11px] text-[#3a6055] mt-1">Safeguards home battery emergency buffer</p>
             </div>
 
             <div>
@@ -140,7 +140,7 @@ export default function SettingsPage() {
                 onChange={(e) => setDefaultDuration(e.target.value)}
                 className="w-full px-3 py-2 bg-white/70 backdrop-blur-md border border-[#88BDA4]/40 rounded-xl text-[#193029] font-bold tech-mono focus:outline-hidden focus:ring-2 focus:ring-[#88BDA4]"
               />
-              <p className="text-[11px] text-slate-500 mt-1">Pre-filled dispatch window</p>
+              <p className="text-[11px] text-[#3a6055] mt-1">Pre-filled dispatch window</p>
             </div>
           </div>
 
@@ -150,7 +150,7 @@ export default function SettingsPage() {
                 <Check className="w-4 h-4" /> Parameters saved successfully
               </span>
             ) : (
-              <span className="text-xs text-slate-400">Values apply to newly generated dispatches</span>
+              <span className="text-xs text-[#3a6055]">Values apply to newly generated dispatches</span>
             )}
 
             <button
@@ -171,7 +171,7 @@ export default function SettingsPage() {
                 <h3 className="text-sm font-bold uppercase tracking-wider text-[#193029]">
                   Backend & Realtime Connection
                 </h3>
-                <p className="text-xs text-slate-500">Supabase PostgreSQL and simulation engine status</p>
+                <p className="text-xs text-[#3a6055]">Supabase PostgreSQL and simulation engine status</p>
               </div>
             </div>
             <RealtimeIndicator />
@@ -181,7 +181,7 @@ export default function SettingsPage() {
             <div className="p-3.5 rounded-xl bg-white/60 backdrop-blur-md border border-[#88BDA4]/30 flex items-center justify-between">
               <div>
                 <span className="font-bold text-[#193029] block">Active Data Access Layer:</span>
-                <span className="text-slate-500">
+                <span className="text-[#3a6055]">
                   {isConfigured
                     ? "Connected to live Supabase project"
                     : "Standalone Mock Engine with reactive simulation loop"}
@@ -199,17 +199,17 @@ export default function SettingsPage() {
             <div className="p-3.5 rounded-xl bg-white/60 backdrop-blur-md border border-[#88BDA4]/30 flex items-center justify-between">
               <div>
                 <span className="font-bold text-[#193029] block">Supabase Client:</span>
-                <span className="text-slate-500">
+                <span className="text-[#3a6055]">
                   {process.env.NEXT_PUBLIC_SUPABASE_URL || "Configured via .env.local"}
                 </span>
               </div>
-              <span className="text-slate-500 tech-mono text-[11px]">v2.117.2</span>
+              <span className="text-[#3a6055] tech-mono text-[11px]">v2.117.2</span>
             </div>
 
             <div className="p-3.5 rounded-xl bg-white/60 backdrop-blur-md border border-[#88BDA4]/30 flex items-center justify-between">
               <div>
                 <span className="font-bold text-[#193029] block">Telemetry Sync:</span>
-                <span className="text-slate-500">Heartbeat check every 5 seconds</span>
+                <span className="text-[#3a6055]">Heartbeat check every 5 seconds</span>
               </div>
               <span className="text-[#659287] font-semibold tech-mono text-[11px]">Synced (0 errors)</span>
             </div>

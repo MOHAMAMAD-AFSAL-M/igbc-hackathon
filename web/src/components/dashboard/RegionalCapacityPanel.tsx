@@ -25,14 +25,14 @@ export function RegionalCapacityPanel({
             <MapPin className="w-4 h-4 text-[#659287]" />
             Regional Demand vs Baseline Supply Planning
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[#3a6055]">
             Compare regional consumer load needed against standard baseline capacity to spot deficit stress points.
           </p>
         </div>
         {selectedRegionId && (
           <button
             onClick={() => onSelectRegion(null)}
-            className="text-xs font-semibold text-[#659287] hover:underline self-start sm:self-auto cursor-pointer"
+            className="text-xs font-semibold text-[#659287] hover:underline self-start sm:self-auto cursor-pointer transition-colors duration-200"
           >
             Show All Regions
           </button>
@@ -63,7 +63,7 @@ export function RegionalCapacityPanel({
                       {reg.name}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500">{reg.zone}</p>
+                  <p className="text-[11px] text-[#3a6055]">{reg.zone}</p>
                 </div>
 
                 <span
@@ -83,13 +83,13 @@ export function RegionalCapacityPanel({
               <div className="mt-4 space-y-3">
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 rounded-xl bg-white/60 border border-white/90">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 block">
+                    <span className="text-[10px] uppercase font-bold text-[#3a6055] block">
                       Currently Needed
                     </span>
                     <span className="text-lg font-bold text-[#193029] tech-mono block mt-0.5">
                       {reg.current_load_mw} MW
                     </span>
-                    <span className="text-[10px] text-slate-400">Regional Load</span>
+                    <span className="text-[10px] text-[#3a6055]">Regional Load</span>
                   </div>
 
                   <div className="p-2.5 rounded-xl bg-[#659287]/10 border border-[#88BDA4]/30">
@@ -106,7 +106,7 @@ export function RegionalCapacityPanel({
                 {/* Progress bar: Load vs Supply */}
                 <div>
                   <div className="flex justify-between text-[11px] mb-1">
-                    <span className="text-slate-500 font-medium">Supply / Load Stress</span>
+                    <span className="text-[#3a6055] font-medium">Supply / Load Stress</span>
                     <span className="font-bold text-[#193029] tech-mono">{loadPercentage}%</span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-slate-200/70 overflow-hidden">
@@ -130,7 +130,7 @@ export function RegionalCapacityPanel({
                       {reg.vpp_hybrid_capacity_mw} MW
                     </strong>
                   </div>
-                  <p className="text-[10px] text-slate-500 mt-1">
+                  <p className="text-[10px] text-[#3a6055] mt-1">
                     {reg.enrolled_hybrid_prosumers} enrolled hybrid solar + battery systems
                   </p>
                 </div>
@@ -153,7 +153,7 @@ export function RegionalCapacityPanel({
                 <button
                   type="button"
                   onClick={() => onRequestSupport(reg)}
-                  className="py-2 px-3 rounded-xl bg-gradient-to-r from-[#659287] to-[#88BDA4] hover:brightness-105 active:scale-95 text-white text-xs font-bold shadow-xs transition-all flex items-center gap-1 cursor-pointer shrink-0"
+                  className="py-2 px-3 rounded-xl bg-gradient-to-r from-[#659287] to-[#88BDA4] hover:brightness-105 active:scale-[0.98] text-white text-xs font-bold shadow-xs transition-all duration-200 flex items-center gap-1 cursor-pointer shrink-0"
                   title="Request Prosumer Support"
                 >
                   <Zap className="w-3.5 h-3.5 fill-white" />

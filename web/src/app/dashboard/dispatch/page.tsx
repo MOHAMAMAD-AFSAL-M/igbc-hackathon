@@ -119,14 +119,14 @@ export default function DispatchListPage() {
                   <td className="py-3.5 px-4 tech-mono font-bold text-[#659287]">
                     {formatPower(d.delivered_kw)}
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600">{formatDuration(d.duration_minutes)}</td>
+                  <td className="py-3.5 px-4 text-[#28483f]">{formatDuration(d.duration_minutes)}</td>
                   <td className="py-3.5 px-4 text-center font-bold text-[#193029] tech-mono">
                     {d.participants_count || 0}
                   </td>
                   <td className="py-3.5 px-4">
                     <StatusBadge status={d.status} size="sm" />
                   </td>
-                  <td className="py-3.5 px-4 text-slate-400 text-right tech-mono">
+                  <td className="py-3.5 px-4 text-[#3a6055] text-right tech-mono">
                     {formatRelativeTime(d.created_at)}
                   </td>
                   <td className="py-3.5 px-4 text-right">

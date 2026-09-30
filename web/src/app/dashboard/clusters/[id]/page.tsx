@@ -36,7 +36,7 @@ export default function ClusterDetailsPage({ params }: { params: Promise<{ id: s
     return (
       <DashboardShell pageTitle="Cluster Not Found">
         <div className="text-center py-12">
-          <p className="text-slate-600">Cluster {clusterId} could not be located.</p>
+          <p className="text-[#28483f]">Cluster {clusterId} could not be located.</p>
           <Link href="/dashboard/clusters" className="text-[#659287] font-semibold mt-2 inline-block">
             Back to Clusters
           </Link>
@@ -84,7 +84,7 @@ export default function ClusterDetailsPage({ params }: { params: Promise<{ id: s
             <span className="text-2xl font-bold text-[#193029] tech-mono mt-1 block">
               {formatPower(cluster.current_load_kw)}
             </span>
-            <span className="text-[10px] text-slate-400 mt-0.5 block">Substation Feeder Flow</span>
+            <span className="text-[10px] text-[#3a6055] mt-0.5 block">Substation Feeder Flow</span>
           </div>
 
           <div className="glass-panel rounded-2xl p-4 border border-[#88BDA4]/40 bg-[#88BDA4]/15 shadow-md">
@@ -114,7 +114,7 @@ export default function ClusterDetailsPage({ params }: { params: Promise<{ id: s
             <span className="text-2xl font-bold text-[#193029] tech-mono mt-1 block">
               {formatPercent(cluster.average_soc)}
             </span>
-            <span className="text-[10px] text-slate-400 mt-0.5 block">
+            <span className="text-[10px] text-[#3a6055] mt-0.5 block">
               {cluster.prosumer_count} batteries enrolled
             </span>
           </div>

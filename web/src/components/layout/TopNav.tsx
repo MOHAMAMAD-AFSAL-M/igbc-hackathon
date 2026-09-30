@@ -38,12 +38,13 @@ export function TopNav({
   ];
 
   return (
-    <header className="sticky top-0 z-20 flex h-16 w-full items-center justify-between glass-nav px-4 sm:px-6">
+    <header className="sticky top-3 z-20 flex h-14 w-[calc(100%-1.5rem)] mx-auto items-center justify-between glass-nav px-4 sm:px-6 rounded-2xl mt-3 border border-[#88BDA4]/20 shadow-lg">
       <div className="flex items-center gap-3">
         {onOpenMobile && (
           <button
             onClick={onOpenMobile}
-            className="md:hidden p-2 rounded-lg text-[#28483f] hover:bg-[#88BDA4]/20 transition-colors"
+            className="md:hidden p-2 rounded-lg text-[#28483f] hover:bg-[#88BDA4]/20 transition-colors duration-200 cursor-pointer"
+            aria-label="Open navigation menu"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -53,7 +54,7 @@ export function TopNav({
             {title}
           </span>
           <span className="hidden md:inline-block text-[#88BDA4]">|</span>
-          <span className="text-xs text-[#52796f] font-medium hidden md:inline-block">
+          <span className="text-xs text-[#3a6055] font-medium hidden md:inline-block">
             State Load Dispatch Center (SLDC)
           </span>
         </div>
@@ -66,11 +67,12 @@ export function TopNav({
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 rounded-xl text-[#28483f] hover:bg-[#88BDA4]/20 transition-colors border border-transparent hover:border-[#88BDA4]/30"
+            className="relative p-2 rounded-xl text-[#28483f] hover:bg-[#88BDA4]/20 transition-colors duration-200 border border-transparent hover:border-[#88BDA4]/30 cursor-pointer"
             title="Grid Alerts & Notifications"
+            aria-label="Grid Alerts & Notifications"
           >
             <Bell className="w-4 h-4" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-500 animate-pulse" aria-hidden="true" />
           </button>
 
           {showNotifications && (
@@ -84,7 +86,8 @@ export function TopNav({
                 </div>
                 <button
                   onClick={() => setShowNotifications(false)}
-                  className="text-slate-400 hover:text-slate-700"
+                  className="text-[#3a6055] hover:text-[#193029] transition-colors duration-200 cursor-pointer p-1 rounded-lg hover:bg-[#88BDA4]/15"
+                  aria-label="Close notifications"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -95,7 +98,7 @@ export function TopNav({
                   <div key={item.id} className="py-2.5 text-left">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-semibold text-[#193029]">{item.title}</span>
-                      <span className="text-[10px] text-slate-500">{item.time}</span>
+                      <span className="text-[10px] text-[#3a6055]">{item.time}</span>
                     </div>
                     <p className="mt-0.5 text-xs text-[#3a6055]">{item.desc}</p>
                   </div>
@@ -105,7 +108,7 @@ export function TopNav({
               <div className="pt-2 text-center border-t border-[#88BDA4]/20">
                 <button
                   onClick={() => setShowNotifications(false)}
-                  className="text-xs font-semibold text-[#659287] hover:text-[#52796f] transition-colors"
+                  className="text-xs font-semibold text-[#659287] hover:text-[#52796f] transition-colors duration-200 cursor-pointer"
                 >
                   Mark all as read
                 </button>
@@ -121,10 +124,11 @@ export function TopNav({
           </div>
           <div className="hidden lg:block text-left text-xs">
             <p className="font-bold text-[#193029]">Operator 04</p>
-            <p className="text-[10px] text-[#52796f]">KSEB SLDC</p>
+            <p className="text-[10px] text-[#3a6055]">KSEB SLDC</p>
           </div>
         </div>
       </div>
     </header>
   );
 }
+

@@ -102,7 +102,7 @@ export function MobileDispatchModal({
               <h3 className="text-base font-bold text-[#193029]">
                 Request Prosumer Grid Support
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#3a6055]">
                 Broadcast push notification to hybrid solar + battery prosumers via mobile IoT app
               </p>
             </div>
@@ -110,7 +110,7 @@ export function MobileDispatchModal({
 
           <button
             onClick={handleReset}
-            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            className="p-1.5 rounded-xl text-[#3a6055] hover:text-[#193029] hover:bg-[#88BDA4]/15 transition-colors duration-200 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -175,7 +175,7 @@ export function MobileDispatchModal({
 
             {/* Live Mobile Notification Preview Box */}
             <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#3a6055] block mb-1.5">
                 Prosumer Mobile Phone Notification Preview
               </span>
               <div className="rounded-2xl p-3.5 bg-gradient-to-r from-slate-900 to-[#193029] text-white shadow-md border border-white/20">
@@ -237,7 +237,7 @@ export function MobileDispatchModal({
             </div>
             <div>
               <h4 className="text-sm font-bold text-[#193029]">Broadcasting to Prosumer Mobile Devices...</h4>
-              <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+              <p className="text-xs text-[#3a6055] mt-1 max-w-sm mx-auto">
                 Pushing demand response request to {currentCluster?.prosumer_count} registered hybrid solar & battery prosumers in {currentCluster?.name}.
               </p>
             </div>
@@ -274,7 +274,7 @@ export function MobileDispatchModal({
                   LIVE INFEED ACTIVE
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-[#3a6055]">
                 KSEB command center has established telemetry handshake with bi-directional inverters. Discharge rate locked at ₹10.00/kWh.
               </p>
             </div>

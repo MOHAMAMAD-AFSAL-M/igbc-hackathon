@@ -70,7 +70,7 @@ export function GridVitalsBanner({ vitals }: GridVitalsBannerProps) {
               +{vitals.voltage_deviation_percent}%
             </span>
           </div>
-          <span className="text-[10px] text-slate-500 mt-1 block">
+          <span className="text-[10px] text-[#3a6055] mt-1 block">
             Nominal {vitals.nominal_voltage_kv.toFixed(2)} kV &bull; Within ±5% tolerance
           </span>
         </div>
@@ -89,7 +89,7 @@ export function GridVitalsBanner({ vitals }: GridVitalsBannerProps) {
               Stable
             </span>
           </div>
-          <span className="text-[10px] text-slate-500 mt-1 block">
+          <span className="text-[10px] text-[#3a6055] mt-1 block">
             Target 50.00 Hz &bull; Power Factor: {vitals.system_power_factor}
           </span>
         </div>
@@ -108,7 +108,7 @@ export function GridVitalsBanner({ vitals }: GridVitalsBannerProps) {
               Peak Hours
             </span>
           </div>
-          <span className="text-[10px] text-slate-500 mt-1 block">
+          <span className="text-[10px] text-[#3a6055] mt-1 block">
             State-wide consumer draw across all circles
           </span>
         </div>
@@ -129,7 +129,7 @@ export function GridVitalsBanner({ vitals }: GridVitalsBannerProps) {
               </span>
             )}
           </div>
-          <span className="text-[10px] text-slate-500 mt-1 block">
+          <span className="text-[10px] text-[#3a6055] mt-1 block">
             Standard thermal + central hydro generation
           </span>
         </div>
